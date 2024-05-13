@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Proyecto_Final
 {
-    List<Cliente> clientes = new List<Cliente>();
+    //List<Cliente> clientes = new List<Cliente>();
     public partial class Form1 : Form
     {
         public Form1()
@@ -31,6 +31,11 @@ namespace Proyecto_Final
             listadoClientes.CantidadAbastecer = int.Parse(txtCantidad.Text);
             
                 
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
