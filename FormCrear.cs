@@ -36,7 +36,7 @@ namespace Proyecto_Final
         {
             string nombreUsuario = txtUsuario.Text;
             string contraseña = txtContraseña.Text;
-
+            
             // Verificar si los campos están vacíos
             if (string.IsNullOrWhiteSpace(nombreUsuario) || string.IsNullOrWhiteSpace(contraseña))
             {

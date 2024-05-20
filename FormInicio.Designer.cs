@@ -42,8 +42,6 @@
             this.radioButtonBomba2 = new System.Windows.Forms.RadioButton();
             this.radioButtonBomba3 = new System.Windows.Forms.RadioButton();
             this.radioButtonBomba4 = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,7 +51,9 @@
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.progressBar4 = new System.Windows.Forms.ProgressBar();
-            this.groupBox1.SuspendLayout();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Monospac821 BT", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(163, 9);
+            this.label1.Location = new System.Drawing.Point(179, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(250, 27);
             this.label1.TabIndex = 1;
@@ -138,7 +138,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(142, 482);
+            this.button1.Location = new System.Drawing.Point(319, 499);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 51);
             this.button1.TabIndex = 12;
@@ -149,71 +149,46 @@
             // radioButtonBomba1
             // 
             this.radioButtonBomba1.AutoSize = true;
-            this.radioButtonBomba1.Location = new System.Drawing.Point(16, 41);
+            this.radioButtonBomba1.Location = new System.Drawing.Point(113, 345);
             this.radioButtonBomba1.Name = "radioButtonBomba1";
-            this.radioButtonBomba1.Size = new System.Drawing.Size(102, 22);
+            this.radioButtonBomba1.Size = new System.Drawing.Size(93, 20);
             this.radioButtonBomba1.TabIndex = 13;
             this.radioButtonBomba1.TabStop = true;
-            this.radioButtonBomba1.Text = "BOMBA 1";
+            this.radioButtonBomba1.Text = "REGULAR";
             this.radioButtonBomba1.UseVisualStyleBackColor = true;
             // 
             // radioButtonBomba2
             // 
             this.radioButtonBomba2.AutoSize = true;
-            this.radioButtonBomba2.Location = new System.Drawing.Point(355, 41);
+            this.radioButtonBomba2.Location = new System.Drawing.Point(407, 345);
             this.radioButtonBomba2.Name = "radioButtonBomba2";
-            this.radioButtonBomba2.Size = new System.Drawing.Size(102, 22);
+            this.radioButtonBomba2.Size = new System.Drawing.Size(75, 20);
             this.radioButtonBomba2.TabIndex = 14;
             this.radioButtonBomba2.TabStop = true;
-            this.radioButtonBomba2.Text = "BOMBA 2";
+            this.radioButtonBomba2.Text = "SUPER";
             this.radioButtonBomba2.UseVisualStyleBackColor = true;
             // 
             // radioButtonBomba3
             // 
             this.radioButtonBomba3.AutoSize = true;
-            this.radioButtonBomba3.Location = new System.Drawing.Point(16, 121);
+            this.radioButtonBomba3.Location = new System.Drawing.Point(113, 415);
             this.radioButtonBomba3.Name = "radioButtonBomba3";
-            this.radioButtonBomba3.Size = new System.Drawing.Size(102, 22);
+            this.radioButtonBomba3.Size = new System.Drawing.Size(75, 20);
             this.radioButtonBomba3.TabIndex = 15;
             this.radioButtonBomba3.TabStop = true;
-            this.radioButtonBomba3.Text = "BOMBA 3";
+            this.radioButtonBomba3.Text = "DIESEL";
             this.radioButtonBomba3.UseVisualStyleBackColor = true;
             // 
             // radioButtonBomba4
             // 
             this.radioButtonBomba4.AutoSize = true;
-            this.radioButtonBomba4.Location = new System.Drawing.Point(355, 121);
+            this.radioButtonBomba4.Location = new System.Drawing.Point(407, 413);
             this.radioButtonBomba4.Name = "radioButtonBomba4";
-            this.radioButtonBomba4.Size = new System.Drawing.Size(102, 22);
+            this.radioButtonBomba4.Size = new System.Drawing.Size(88, 20);
             this.radioButtonBomba4.TabIndex = 16;
             this.radioButtonBomba4.TabStop = true;
-            this.radioButtonBomba4.Text = "BOMBA 4";
+            this.radioButtonBomba4.Text = "VPOWER";
             this.radioButtonBomba4.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1140, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 22);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "FECHA:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.groupBox1.Controls.Add(this.radioButtonBomba1);
-            this.groupBox1.Controls.Add(this.radioButtonBomba2);
-            this.groupBox1.Controls.Add(this.radioButtonBomba3);
-            this.groupBox1.Controls.Add(this.radioButtonBomba4);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(56, 300);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 158);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Seleccione la Bomba";
             // 
             // pictureBox1
             // 
@@ -227,7 +202,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(729, 123);
+            this.label6.Location = new System.Drawing.Point(832, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 21);
             this.label6.TabIndex = 21;
@@ -238,7 +213,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(729, 185);
+            this.label8.Location = new System.Drawing.Point(1163, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 21);
             this.label8.TabIndex = 22;
@@ -248,7 +223,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(729, 246);
+            this.label9.Location = new System.Drawing.Point(832, 415);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 21);
             this.label9.TabIndex = 23;
@@ -258,7 +233,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(729, 310);
+            this.label10.Location = new System.Drawing.Point(1163, 411);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 21);
             this.label10.TabIndex = 24;
@@ -266,38 +241,74 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(841, 123);
+            this.progressBar1.Location = new System.Drawing.Point(738, 361);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(303, 23);
             this.progressBar1.TabIndex = 25;
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(841, 185);
+            this.progressBar2.Location = new System.Drawing.Point(1047, 361);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(303, 23);
             this.progressBar2.TabIndex = 26;
             // 
             // progressBar3
             // 
-            this.progressBar3.Location = new System.Drawing.Point(841, 246);
+            this.progressBar3.Location = new System.Drawing.Point(738, 700);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(303, 23);
             this.progressBar3.TabIndex = 27;
             // 
             // progressBar4
             // 
-            this.progressBar4.Location = new System.Drawing.Point(824, 470);
+            this.progressBar4.Location = new System.Drawing.Point(1066, 700);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(303, 23);
             this.progressBar4.TabIndex = 28;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 34);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Regresar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(171, 499);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 51);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "Nuevo";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(91, 308);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(135, 16);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Seleccione la bomba";
             // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1338, 621);
+            this.ClientSize = new System.Drawing.Size(1381, 756);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.radioButtonBomba4);
+            this.Controls.Add(this.radioButtonBomba3);
+            this.Controls.Add(this.radioButtonBomba2);
+            this.Controls.Add(this.radioButtonBomba1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.progressBar4);
             this.Controls.Add(this.progressBar3);
             this.Controls.Add(this.progressBar2);
@@ -307,8 +318,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label5);
@@ -322,8 +331,6 @@
             this.Name = "FormInicio";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -346,8 +353,6 @@
         private System.Windows.Forms.RadioButton radioButtonBomba2;
         private System.Windows.Forms.RadioButton radioButtonBomba3;
         private System.Windows.Forms.RadioButton radioButtonBomba4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
@@ -357,6 +362,9 @@
         private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.ProgressBar progressBar3;
         private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label11;
     }
 }
 

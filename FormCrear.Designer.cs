@@ -48,7 +48,7 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(264, 356);
+            this.btnCrear.Location = new System.Drawing.Point(292, 424);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(103, 38);
             this.btnCrear.TabIndex = 10;
@@ -58,14 +58,14 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(203, 245);
+            this.txtContraseña.Location = new System.Drawing.Point(231, 313);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(197, 22);
             this.txtContraseña.TabIndex = 9;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(206, 115);
+            this.txtUsuario.Location = new System.Drawing.Point(234, 183);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(194, 22);
             this.txtUsuario.TabIndex = 8;
@@ -73,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(203, 183);
+            this.label2.Location = new System.Drawing.Point(231, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 16);
             this.label2.TabIndex = 7;
@@ -82,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(200, 76);
+            this.label1.Location = new System.Drawing.Point(228, 144);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 6;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 504);
+            this.ClientSize = new System.Drawing.Size(1053, 655);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.txtContraseña);
