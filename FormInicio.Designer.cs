@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_Final
 {
-    partial class Form1
+    partial class FormInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -138,7 +138,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(227, 482);
+            this.button1.Location = new System.Drawing.Point(142, 482);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 51);
             this.button1.TabIndex = 12;
@@ -208,7 +208,7 @@
             this.groupBox1.Controls.Add(this.radioButtonBomba3);
             this.groupBox1.Controls.Add(this.radioButtonBomba4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(58, 297);
+            this.groupBox1.Location = new System.Drawing.Point(56, 300);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(475, 158);
             this.groupBox1.TabIndex = 19;
@@ -287,12 +287,12 @@
             // 
             // progressBar4
             // 
-            this.progressBar4.Location = new System.Drawing.Point(841, 310);
+            this.progressBar4.Location = new System.Drawing.Point(824, 470);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(303, 23);
             this.progressBar4.TabIndex = 28;
             // 
-            // Form1
+            // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -319,7 +319,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "FormInicio";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
