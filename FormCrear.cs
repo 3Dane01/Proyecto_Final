@@ -76,6 +76,11 @@ namespace Proyecto_Final
                     // Limpiar campos
                     txtUsuario.Clear();
                     txtContraseña.Clear();
+
+                    FormIngreso Regresar = new FormIngreso();
+                    Regresar.Show();
+                    this.Hide();
+
                 }
 
             }

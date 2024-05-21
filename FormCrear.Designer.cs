@@ -38,9 +38,10 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(20, 19);
+            this.btnRegresar.Location = new System.Drawing.Point(98, 207);
+            this.btnRegresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.Size = new System.Drawing.Size(75, 31);
             this.btnRegresar.TabIndex = 11;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
@@ -48,9 +49,10 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(292, 424);
+            this.btnCrear.Location = new System.Drawing.Point(177, 207);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(103, 38);
+            this.btnCrear.Size = new System.Drawing.Size(77, 31);
             this.btnCrear.TabIndex = 10;
             this.btnCrear.Text = "Crear cuenta";
             this.btnCrear.UseVisualStyleBackColor = true;
@@ -58,47 +60,52 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(231, 313);
+            this.txtContraseña.Location = new System.Drawing.Point(105, 158);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(197, 22);
+            this.txtContraseña.Size = new System.Drawing.Size(149, 20);
             this.txtContraseña.TabIndex = 9;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(234, 183);
+            this.txtUsuario.Location = new System.Drawing.Point(105, 83);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(194, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(146, 20);
             this.txtUsuario.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(231, 251);
+            this.label2.Location = new System.Drawing.Point(102, 134);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(110, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Contraseña:";
+            this.label2.Text = "Crea una Contraseña:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 144);
+            this.label1.Location = new System.Drawing.Point(102, 57);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Usuario:";
+            this.label1.Text = "Crea un Usuario:";
             // 
             // FormCrear
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 655);
+            this.ClientSize = new System.Drawing.Size(352, 313);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormCrear";
             this.Text = "FormCrear";
             this.ResumeLayout(false);
