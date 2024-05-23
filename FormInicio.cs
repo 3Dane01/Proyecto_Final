@@ -19,6 +19,8 @@ namespace Proyecto_Final
         public FormInicio()
         {
             InitializeComponent();
+            btnBorrar.Click -= btnBorrar_Click;
+            btnBorrar.Click += btnBorrar_Click;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,13 +91,6 @@ namespace Proyecto_Final
             txtCantidad.Text = string.Empty;
 
             MessageBox.Show("Abastecimiento registrado exitosamente.");
-
-
-
-
-
-
-
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -184,11 +179,27 @@ namespace Proyecto_Final
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void radioButtonBomba1_CheckedChanged(object sender, EventArgs e)
 
         {
 
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCantidad.Text = string.Empty;
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCantidad.Text))
+            {
+                txtCantidad.Text = txtCantidad.Text.Substring(0, txtCantidad.Text.Length - 1);
+            }
         }
     }
 }
