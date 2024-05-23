@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Proyecto_Final
 {
@@ -25,53 +27,75 @@ namespace Proyecto_Final
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {/*
-            string Nombre = txtNombre.Text;
-            string Apellido = txtApellido.Text;
-            string tipoAbastecimiento = comboBoxTipoAbastecimiento.Text;
+        {
+            string nombre = txtNombre.Text;
+            string apellido = txtApellido.Text;
+            string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
             string cantidad = txtCantidad.Text ;
-            if (string.IsNullOrWhiteSpace(Nombre) || string.IsNullOrWhiteSpace(Apellido) || string.IsNullOrWhiteSpace(cantidad))
+            int numeroBomba = 0;
+            int cantidadGasolina;
+
+            if (radioButtonBomba1.Checked)
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                numeroBomba = 1;
+            }
+            else if (radioButtonBomba2.Checked)
+            {
+                numeroBomba = 2;
+            }
+            else if (radioButtonBomba3.Checked)
+            {
+                numeroBomba = 3;
+            }
+            else if (radioButtonBomba4.Checked)
+            {
+                numeroBomba = 4;
+            }
+
+
+            var abastecimiento = new
+            {
+                Nombre = nombre,
+                Apellido = apellido,
+                Abastecimiento= tipoAbastecimiento1,
+                NumeroBomba = numeroBomba,
+                //CantidadGasolina = cantidadGasolina,
+                Fecha= DateTime.Now
+            };
+
+            List<dynamic> Abastecimientos1 = new List<dynamic>();
+            if(File.Exists("abastecimientos1.json"))
+            {
+                string json = File.ReadAllText("abastecimientos1.json");
+                Abastecimientos1= JsonConvert.DeserializeObject<dynamic>(json);
             }
             else
             {
-                // Verificar si ya existe un usuario con el mismo nombre
-                bool usuarioExistente = usuarios.Exists(u => u.NombreUsuario == nombreUsuario);
-                foreach (var usuario in usuarios)
-                {
-                    if (usuario.NombreUsuario == nombreUsuario)
-                    {
-                        usuarioExistente = true;
-                        break;
-                    }
-                }
+                Abastecimientos1 = new List<dynamic>();
+            }
 
-                if (usuarioExistente)
-                {
-                    MessageBox.Show("El nombre de usuario ya está en uso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtUsuario.Clear();
-                    txtContraseña.Clear();
-                }
-                else
-                {
-                    // Agregar nuevo usuario a la lista
-                    claseUsuario nuevoUsuario = new claseUsuario();
-                    nuevoUsuario.NombreUsuario = nombreUsuario;
-                    nuevoUsuario.Contraseña = contraseña;
-                    usuarios.Add(nuevoUsuario);
-                    MessageBox.Show("Usuario registrado exitosamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //guardar los datos en el archivo
-                    string json = JsonConvert.SerializeObject(usuarios, Newtonsoft.Json.Formatting.Indented);
-                    File.WriteAllText(rutaArchivo, json);
+            Abastecimientos1.Add(abastecimiento);
 
-                    // Limpiar campos
-                    txtUsuario.Clear();
-                    txtContraseña.Clear();
-                }
+            string otrojson= JsonConvert.SerializeObject(Abastecimientos1, Formatting.Indented);
+            File.WriteAllText("abastecimientos1.json", otrojson);
 
-            }           
-             */   
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            comboBoxTipoAbastecimiento.SelectedIndex = -1;
+            radioButtonBomba1.Checked = false;
+            radioButtonBomba2.Checked = false;
+            radioButtonBomba3.Checked = false;
+            radioButtonBomba4.Checked = false;
+            txtCantidad.Text = string.Empty;
+
+            MessageBox.Show("Abastecimiento registrado exitosamente.");
+
+
+
+
+
+
+
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -84,6 +108,9 @@ namespace Proyecto_Final
             txtNombre.Clear();
             txtApellido.Clear();
             txtCantidad.Clear();
+
+            comboBoxTipoAbastecimiento.Items.Clear();
+            comboBoxTipoAbastecimiento.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -92,6 +119,14 @@ namespace Proyecto_Final
             Regresar.Show();
             this.Hide();
         }
+
+        /*
+        private void GuardarAbast()
+        {
+            string json = JsonConvert.SerializeObject(abas, Formatting.Indented);
+            File.WriteAllText("abastecimientos.json", json);
+        }
+        */
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -140,6 +175,11 @@ namespace Proyecto_Final
         private void button13_Click(object sender, EventArgs e)
         {
             txtCantidad.Text += "0";
+        }
+
+        private void radioButtonBomba1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
