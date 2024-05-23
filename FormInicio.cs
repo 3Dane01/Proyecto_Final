@@ -33,7 +33,7 @@ namespace Proyecto_Final
             string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
             string cantidad = txtCantidad.Text ;
             int numeroBomba = 0;
-            int cantidadGasolina;
+            string cantidadGasolina = txtCantidad.Text;
 
             if (radioButtonBomba1.Checked)
             {
@@ -53,30 +53,28 @@ namespace Proyecto_Final
             }
 
 
-            var abastecimiento = new
+            var abastecimiento = new Cliente
             {
                 Nombre = nombre,
                 Apellido = apellido,
-                Abastecimiento= tipoAbastecimiento1,
-                NumeroBomba = numeroBomba,
-                //CantidadGasolina = cantidadGasolina,
-                Fecha= DateTime.Now
+                TipoAbastecimiento = tipoAbastecimiento1,
+                BombaSeleccionada = numeroBomba,
+                CantidadAbastecer = cantidadGasolina,
+                Fecha = DateTime.Now
+
             };
 
-            List<dynamic> Abastecimientos1 = new List<dynamic>();
-            if(File.Exists("abastecimientos1.json"))
+
+            List<Cliente> Abastecimientos1 = new List<Cliente>();
+            if (File.Exists("abastecimientos1.json"))
             {
                 string json = File.ReadAllText("abastecimientos1.json");
-                Abastecimientos1= JsonConvert.DeserializeObject<dynamic>(json);
-            }
-            else
-            {
-                Abastecimientos1 = new List<dynamic>();
+                Abastecimientos1 = JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
             }
 
             Abastecimientos1.Add(abastecimiento);
 
-            string otrojson= JsonConvert.SerializeObject(Abastecimientos1, Formatting.Indented);
+            string otrojson = JsonConvert.SerializeObject(Abastecimientos1, Formatting.Indented);
             File.WriteAllText("abastecimientos1.json", otrojson);
 
             txtNombre.Text = string.Empty;
@@ -178,6 +176,16 @@ namespace Proyecto_Final
         }
 
         private void radioButtonBomba1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
 
         }
