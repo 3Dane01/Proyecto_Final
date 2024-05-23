@@ -177,7 +177,16 @@ namespace Proyecto_Final
             txtCantidad.Text += "0";
         }
 
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+
         private void radioButtonBomba1_CheckedChanged(object sender, EventArgs e)
+
         {
 
         }
