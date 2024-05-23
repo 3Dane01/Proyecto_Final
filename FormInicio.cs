@@ -141,5 +141,10 @@ namespace Proyecto_Final
         {
             txtCantidad.Text += "0";
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
