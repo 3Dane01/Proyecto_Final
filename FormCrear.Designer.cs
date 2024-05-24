@@ -39,7 +39,7 @@
             // btnRegresar
             // 
             this.btnRegresar.Location = new System.Drawing.Point(98, 207);
-            this.btnRegresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegresar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 31);
             this.btnRegresar.TabIndex = 11;
@@ -50,7 +50,7 @@
             // btnCrear
             // 
             this.btnCrear.Location = new System.Drawing.Point(177, 207);
-            this.btnCrear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(77, 31);
             this.btnCrear.TabIndex = 10;
@@ -61,7 +61,7 @@
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(105, 158);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(149, 20);
             this.txtContraseña.TabIndex = 9;
@@ -69,7 +69,7 @@
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(105, 83);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(146, 20);
             this.txtUsuario.TabIndex = 8;
@@ -98,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(352, 313);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnCrear);
@@ -105,7 +106,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCrear";
             this.Text = "FormCrear";
             this.ResumeLayout(false);

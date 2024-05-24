@@ -35,12 +35,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCrear
             // 
             this.btnCrear.Location = new System.Drawing.Point(161, 298);
-            this.btnCrear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(68, 20);
             this.btnCrear.TabIndex = 11;
@@ -51,7 +52,7 @@
             // btnIngresar
             // 
             this.btnIngresar.Location = new System.Drawing.Point(161, 218);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(68, 30);
             this.btnIngresar.TabIndex = 10;
@@ -62,7 +63,7 @@
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(92, 175);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(137, 20);
             this.txtContraseña.TabIndex = 9;
@@ -70,7 +71,7 @@
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(92, 71);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(137, 20);
             this.txtUsuario.TabIndex = 8;
@@ -104,11 +105,23 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "No tienes Cuenta?";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 224);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Cerrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(331, 355);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.btnIngresar);
@@ -116,7 +129,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormIngreso";
             this.Text = "FormIngreso";
             this.ResumeLayout(false);
@@ -133,5 +146,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }
