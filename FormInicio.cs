@@ -48,7 +48,7 @@ namespace Proyecto_Final
 
            
 
-            string cantidadGasolina = txtCantidad.Text;
+            string cantidadGasolin = txtCantidad.Text;
 
 
             if (radioButtonBomba1.Checked)
@@ -92,7 +92,7 @@ namespace Proyecto_Final
                 Apellido = apellido,
                 TipoAbastecimiento = tipoAbastecimiento1,
                 BombaSeleccionada = numeroBomba,
-                CantidadAbastecer = cantidadGasolina,
+                CantidadAbastecer = cantidadGasolin,
                 Fecha = DateTime.Now
 
             };
@@ -102,8 +102,6 @@ namespace Proyecto_Final
             if (File.Exists("abastecimientos1.json"))
             {
                 string json = File.ReadAllText("abastecimientos1.json");
-
-                Abastecimientos1= JsonConvert.DeserializeObject<List<dynamic>>(json);
 
                 Abastecimientos1 = JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
 
@@ -284,8 +282,7 @@ namespace Proyecto_Final
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
-
-
+        }
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtCantidad.Text = string.Empty;
@@ -301,11 +298,6 @@ namespace Proyecto_Final
         }
 
         private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCantidad_TextChanged(object sender, EventArgs e)
         {
 
         }
