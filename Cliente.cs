@@ -12,7 +12,9 @@ namespace Proyecto_Final
         private string apellido;
         private string tipoAbastecimiento;
         private string cantidadAbastecer;
+
         private int bombaSeleccionada;
+
         private DateTime fecha;
 
         public string Nombre { get => nombre; set => nombre = value; }
