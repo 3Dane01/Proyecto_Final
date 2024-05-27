@@ -288,6 +288,8 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(303, 23);
             this.progressBar1.TabIndex = 25;
+            this.progressBar1.Minimum = 0; // Establece el valor mínimo en 0
+            this.progressBar1.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // progressBar2
             // 
@@ -296,6 +298,8 @@
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(303, 23);
             this.progressBar2.TabIndex = 26;
+            this.progressBar2.Minimum = 0; // Establece el valor mínimo en 0
+            this.progressBar2.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // progressBar3
             // 
@@ -304,6 +308,8 @@
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(303, 23);
             this.progressBar3.TabIndex = 27;
+            this.progressBar3.Minimum = 0; // Establece el valor mínimo en 0
+            this.progressBar3.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // progressBar4
             // 
@@ -312,6 +318,8 @@
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(303, 23);
             this.progressBar4.TabIndex = 28;
+            this.progressBar4.Minimum = 0; // Establece el valor mínimo en 0
+            this.progressBar4.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // button2
             // 
@@ -323,6 +331,7 @@
             this.button2.Text = "Regresar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+
             // 
             // label11
             // 

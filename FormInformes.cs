@@ -25,8 +25,6 @@ namespace Proyecto_Final
         {
             comboBoxInfo.Items.Add("Cierre de Caja");
             comboBoxInfo.Items.Add("Abastecimientos Prepago");
-            
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
