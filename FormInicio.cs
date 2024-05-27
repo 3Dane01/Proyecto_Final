@@ -11,16 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
 namespace Proyecto_Final
 {
     //List<Cliente> clientes = new List<Cliente>();
     public partial class FormInicio : Form
     {
 
-        int porcentajeBomba1 = 0;
-        int porcentajeBomba2 = 0;
-        int porcentajeBomba3 = 0;
-        int porcentajeBomba4 = 0;
+        int CANTIDAD_INICIAL = 1000;
         System.Windows.Forms.ProgressBar currentProgressBar;
 
         public FormInicio()
@@ -30,28 +28,45 @@ namespace Proyecto_Final
             this.StartPosition = FormStartPosition.CenterScreen;
             btnBorrar.Click -= btnBorrar_Click;
             btnBorrar.Click += btnBorrar_Click;
-            currentProgressBar = progressBar1; // Inicialmente, usamos la barra de progreso de Bomba 1
+            progressBar1.Value = progressBar1.Maximum;
+            progressBar2.Value = progressBar2.Maximum;
+            progressBar3.Value = progressBar3.Maximum;
+            progressBar4.Value = progressBar4.Maximum;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CargarDatos();
 
         }
+        private void FormInicio_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GuardarDatos();
+            Application.Exit();
+        }
 
+
+
+        private int ObtenerCantidadIngresada()
+        {
+            int cantidad;
+            if (!int.TryParse(txtCantidad.Text, out cantidad))
+            {
+                MessageBox.Show("Por favor, ingrese una cantidad válida.");
+                return 0;
+            }
+            return cantidad;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
-            string cantidad = txtCantidad.Text ;
+            string cantidad = txtCantidad.Text;
             int numeroBomba = 0;
 
             int cantidadGasolina;
             int cantidadProgreso = 0;
-
-           
-
-            string cantidadGasolin = txtCantidad.Text;
 
             if (string.IsNullOrWhiteSpace(nombre))
             {
@@ -62,7 +77,7 @@ namespace Proyecto_Final
             if (string.IsNullOrWhiteSpace(apellido))
             {
                 MessageBox.Show("Ingrese un apellido");
-                txtNombre.Focus();
+                txtApellido.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(tipoAbastecimiento1))
@@ -76,7 +91,6 @@ namespace Proyecto_Final
                 MessageBox.Show("Seleccione una bomba.");
                 return;
             }
-
 
             if (radioButtonBomba1.Checked)
             {
@@ -98,14 +112,12 @@ namespace Proyecto_Final
                 numeroBomba = 4;
                 currentProgressBar = progressBar4;
             }
-            // Si se selecciona "Tanque lleno", establecer la cantidadProgreso en el valor máximo
             if (tipoAbastecimiento1 == "Tanque lleno")
             {
                 cantidadProgreso = 100;
             }
             else
             {
-                // Si no se selecciona "Tanque lleno", intenta analizar la cantidad ingresada manualmente
                 if (!int.TryParse(txtCantidad.Text, out cantidadProgreso))
                 {
                     MessageBox.Show("Por favor, ingrese una cantidad válida.");
@@ -113,32 +125,47 @@ namespace Proyecto_Final
                 }
             }
 
+            if (ObtenerCantidadIngresada() > currentProgressBar.Value)
+            {
+                MessageBox.Show("No se puede ingresar esa cantidad, el tanque ya está vacío.");
+                return;
+            }
+
+
             var abastecimiento = new Cliente
             {
                 Nombre = nombre,
                 Apellido = apellido,
                 TipoAbastecimiento = tipoAbastecimiento1,
                 BombaSeleccionada = numeroBomba,
-                CantidadAbastecer = cantidadGasolin,
+                CantidadAbastecer = cantidad,
                 Fecha = DateTime.Now
-
             };
 
+            List<Cliente> abastecimientos1 = LeerArchivoAbastecimientos();
+            abastecimientos1.Add(abastecimiento);
+            GuardarArchivoAbastecimientos(abastecimientos1);
 
-            List<Cliente> Abastecimientos1 = new List<Cliente>();
-            if (File.Exists("abastecimientos1.json"))
+            if (radioButtonBomba1.Checked)
             {
-                string json = File.ReadAllText("abastecimientos1.json");
-
-                Abastecimientos1 = JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
-
+                progressBar1.Value = Math.Max(0, progressBar1.Value - ObtenerCantidadIngresada());
+                label7.Text = $"{progressBar1.Value}%";
             }
-            
-
-            Abastecimientos1.Add(abastecimiento);
-
-            string otrojson = JsonConvert.SerializeObject(Abastecimientos1, Formatting.Indented);
-            File.WriteAllText("abastecimientos1.json", otrojson);
+            else if (radioButtonBomba2.Checked)
+            {
+                progressBar2.Value = Math.Max(0, progressBar2.Value - ObtenerCantidadIngresada());
+                label12.Text = $"{progressBar2.Value}%";
+            }
+            else if (radioButtonBomba3.Checked)
+            {
+                progressBar3.Value = Math.Max(0, progressBar3.Value - ObtenerCantidadIngresada());
+                label13.Text = $"{progressBar3.Value}%";
+            }
+            else if (radioButtonBomba4.Checked)
+            {
+                progressBar4.Value = Math.Max(0, progressBar4.Value - ObtenerCantidadIngresada());
+                label14.Text = $"{progressBar4.Value}%";
+            }
 
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
@@ -148,32 +175,6 @@ namespace Proyecto_Final
             radioButtonBomba3.Checked = false;
             radioButtonBomba4.Checked = false;
             txtCantidad.Text = string.Empty;
-
-            // Actualizar la barra de progreso de la bomba seleccionada
-            if (currentProgressBar == progressBar1)
-            {
-                porcentajeBomba1 += cantidadProgreso;
-                progressBar1.Value = Math.Min(100, porcentajeBomba1);
-                label7.Text = $"{progressBar1.Value}%";
-            }
-            else if (currentProgressBar == progressBar2)
-            {
-                porcentajeBomba2 += cantidadProgreso;
-                progressBar2.Value = Math.Min(100, porcentajeBomba2);
-                label12.Text = $"{progressBar2.Value}%";
-            }
-            else if (currentProgressBar == progressBar3)
-            {
-                porcentajeBomba3 += cantidadProgreso;
-                progressBar3.Value = Math.Min(100, porcentajeBomba3);
-                label13.Text = $"{progressBar3.Value}%";
-            }
-            else if (currentProgressBar == progressBar4)
-            {
-                porcentajeBomba4 += cantidadProgreso;
-                progressBar4.Value = Math.Min(100, porcentajeBomba4);
-                label14.Text = $"{progressBar4.Value}%";
-            }
         }
       
 
@@ -190,16 +191,8 @@ namespace Proyecto_Final
 
             comboBoxTipoAbastecimiento.Items.Clear();
             comboBoxTipoAbastecimiento.Text = "";
-            /*
-            radioButtonBomba1.Checked = false;
-            radioButtonBomba2.Checked = false;
-            radioButtonBomba3.Checked = false;
-            radioButtonBomba4.Checked = false;*/
-
-            // Vuelve a cargar los elementos en el combo box
             comboBoxTipoAbastecimiento.Items.Add("Prepago");
             comboBoxTipoAbastecimiento.Items.Add("Tanque lleno");
-           
 
             if (currentProgressBar == progressBar1)
             {
@@ -217,14 +210,13 @@ namespace Proyecto_Final
             {
                 currentProgressBar = progressBar1;
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormIngreso Regresar = new FormIngreso();
-            Regresar.Show();
+            GuardarDatos();
+            FormIngreso regresar = new FormIngreso();
+            regresar.Show();
             this.Hide();
         }
 
@@ -324,20 +316,64 @@ namespace Proyecto_Final
 
         }
 
+        private void GuardarDatos()
+        {
+            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+            GuardarArchivoAbastecimientos(abastecimientos);
+        }
+        private void CargarDatos()
+        {
+            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+            foreach (var abastecimiento in abastecimientos)
+            {
+                switch (abastecimiento.BombaSeleccionada)
+                {
+                    case 1:
+                        progressBar1.Value = Math.Max(0, progressBar1.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label7.Text = $"{progressBar1.Value}%";
+                        break;
+                    case 2:
+                        progressBar2.Value = Math.Max(0, progressBar2.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label12.Text = $"{progressBar2.Value}%";
+                        break;
+                    case 3:
+                        progressBar3.Value = Math.Max(0, progressBar3.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label13.Text = $"{progressBar3.Value}%";
+                        break;
+                    case 4:
+                        progressBar4.Value = Math.Max(0, progressBar4.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label14.Text = $"{progressBar4.Value}%";
+                        break;
+                }
+            }
+        }
+        private List<Cliente> LeerArchivoAbastecimientos()
+        {
+            if (File.Exists("abastecimientos1.json"))
+            {
+                string json = File.ReadAllText("abastecimientos1.json");
+                return JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
+            }
+            return new List<Cliente>();
+        }
+
+        private void GuardarArchivoAbastecimientos(List<Cliente> abastecimientos)
+        {
+            string json = JsonConvert.SerializeObject(abastecimientos, Formatting.Indented);
+            File.WriteAllText("abastecimientos1.json", json);
+        }
+
         private void label7_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void FormInicio_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
+        
         private void buttonCierreCaja_Click(object sender, EventArgs e)
         {
-            FormInformes formcrear2 = new FormInformes();
-            formcrear2.Show();
+            GuardarDatos();
+            FormInformes formCrear2 = new FormInformes();
+            formCrear2.Show();
             this.Hide();
         }
 
