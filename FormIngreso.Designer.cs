@@ -40,10 +40,10 @@
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(161, 298);
-            this.btnCrear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCrear.Location = new System.Drawing.Point(215, 367);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(68, 20);
+            this.btnCrear.Size = new System.Drawing.Size(91, 25);
             this.btnCrear.TabIndex = 11;
             this.btnCrear.Text = "Crear Usuario";
             this.btnCrear.UseVisualStyleBackColor = true;
@@ -51,10 +51,10 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(161, 218);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnIngresar.Location = new System.Drawing.Point(215, 268);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(68, 30);
+            this.btnIngresar.Size = new System.Drawing.Size(91, 37);
             this.btnIngresar.TabIndex = 10;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -62,54 +62,54 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(92, 175);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2);
+            this.txtContraseña.Location = new System.Drawing.Point(123, 215);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(137, 20);
+            this.txtContraseña.Size = new System.Drawing.Size(181, 22);
             this.txtContraseña.TabIndex = 9;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(92, 71);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsuario.Location = new System.Drawing.Point(123, 87);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(137, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(181, 22);
             this.txtUsuario.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 136);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(123, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(79, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Contraseña:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(90, 35);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(120, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Usuario:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 302);
+            this.label3.Location = new System.Drawing.Point(81, 372);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.Size = new System.Drawing.Size(116, 16);
             this.label3.TabIndex = 12;
             this.label3.Text = "No tienes Cuenta?";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(23, 224);
+            this.button1.Location = new System.Drawing.Point(31, 276);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 13;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = true;
@@ -117,10 +117,10 @@
             // 
             // FormIngreso
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSlateGray;
-            this.ClientSize = new System.Drawing.Size(331, 355);
+            this.ClientSize = new System.Drawing.Size(441, 437);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCrear);
@@ -129,9 +129,10 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormIngreso";
             this.Text = "FormIngreso";
+            this.Load += new System.EventHandler(this.FormIngreso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

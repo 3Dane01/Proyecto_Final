@@ -70,20 +70,19 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.buttonCierreCaja = new System.Windows.Forms.Button();
-            this.buttonInformePrepago = new System.Windows.Forms.Button();
-            this.buttonInfTanqueLleno = new System.Windows.Forms.Button();
-            this.buttonBombaRec = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -232,18 +231,20 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(603, 0);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(649, 28);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 1184);
+            this.pictureBox1.Size = new System.Drawing.Size(28, 451);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(813, 15);
+            this.label6.Location = new System.Drawing.Point(880, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 22);
             this.label6.TabIndex = 21;
@@ -254,7 +255,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1144, 15);
+            this.label8.Location = new System.Drawing.Point(1211, 14);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 22);
             this.label8.TabIndex = 22;
@@ -264,7 +265,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(813, 358);
+            this.label9.Location = new System.Drawing.Point(880, 357);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(96, 22);
             this.label9.TabIndex = 23;
@@ -274,7 +275,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1144, 354);
+            this.label10.Location = new System.Drawing.Point(1211, 353);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 22);
             this.label10.TabIndex = 24;
@@ -282,7 +283,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(727, 306);
+            this.progressBar1.Location = new System.Drawing.Point(794, 305);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(303, 23);
@@ -290,7 +291,7 @@
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(1035, 306);
+            this.progressBar2.Location = new System.Drawing.Point(1102, 305);
             this.progressBar2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(303, 23);
@@ -298,7 +299,7 @@
             // 
             // progressBar3
             // 
-            this.progressBar3.Location = new System.Drawing.Point(720, 644);
+            this.progressBar3.Location = new System.Drawing.Point(787, 643);
             this.progressBar3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(303, 23);
@@ -306,7 +307,7 @@
             // 
             // progressBar4
             // 
-            this.progressBar4.Location = new System.Drawing.Point(1048, 644);
+            this.progressBar4.Location = new System.Drawing.Point(1115, 643);
             this.progressBar4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(303, 23);
@@ -457,7 +458,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1117, 71);
+            this.pictureBox3.Location = new System.Drawing.Point(1184, 70);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(189, 169);
@@ -469,7 +470,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(767, 71);
+            this.pictureBox4.Location = new System.Drawing.Point(834, 70);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(203, 181);
@@ -481,7 +482,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(780, 421);
+            this.pictureBox5.Location = new System.Drawing.Point(847, 420);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(189, 182);
@@ -492,7 +493,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1117, 421);
+            this.pictureBox2.Location = new System.Drawing.Point(1184, 420);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(189, 182);
@@ -502,47 +503,17 @@
             // 
             // buttonCierreCaja
             // 
+            this.buttonCierreCaja.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonCierreCaja.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCierreCaja.Location = new System.Drawing.Point(739, 762);
+            this.buttonCierreCaja.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonCierreCaja.Location = new System.Drawing.Point(1301, 708);
             this.buttonCierreCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCierreCaja.Name = "buttonCierreCaja";
-            this.buttonCierreCaja.Size = new System.Drawing.Size(100, 63);
+            this.buttonCierreCaja.Size = new System.Drawing.Size(117, 63);
             this.buttonCierreCaja.TabIndex = 42;
-            this.buttonCierreCaja.Text = "Cierre de Caja";
-            this.buttonCierreCaja.UseVisualStyleBackColor = true;
-            // 
-            // buttonInformePrepago
-            // 
-            this.buttonInformePrepago.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInformePrepago.Location = new System.Drawing.Point(892, 762);
-            this.buttonInformePrepago.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonInformePrepago.Name = "buttonInformePrepago";
-            this.buttonInformePrepago.Size = new System.Drawing.Size(99, 63);
-            this.buttonInformePrepago.TabIndex = 43;
-            this.buttonInformePrepago.Text = "Informe Prepago";
-            this.buttonInformePrepago.UseVisualStyleBackColor = true;
-            // 
-            // buttonInfTanqueLleno
-            // 
-            this.buttonInfTanqueLleno.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInfTanqueLleno.Location = new System.Drawing.Point(1047, 762);
-            this.buttonInfTanqueLleno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonInfTanqueLleno.Name = "buttonInfTanqueLleno";
-            this.buttonInfTanqueLleno.Size = new System.Drawing.Size(131, 63);
-            this.buttonInfTanqueLleno.TabIndex = 44;
-            this.buttonInfTanqueLleno.Text = "Informe Tanque Lleno";
-            this.buttonInfTanqueLleno.UseVisualStyleBackColor = true;
-            // 
-            // buttonBombaRec
-            // 
-            this.buttonBombaRec.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBombaRec.Location = new System.Drawing.Point(1243, 762);
-            this.buttonBombaRec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonBombaRec.Name = "buttonBombaRec";
-            this.buttonBombaRec.Size = new System.Drawing.Size(108, 63);
-            this.buttonBombaRec.TabIndex = 45;
-            this.buttonBombaRec.Text = "Bomba Recurrente";
-            this.buttonBombaRec.UseVisualStyleBackColor = true;
+            this.buttonCierreCaja.Text = "INFORMES";
+            this.buttonCierreCaja.UseVisualStyleBackColor = false;
+            this.buttonCierreCaja.Click += new System.EventHandler(this.buttonCierreCaja_Click);
             // 
             // btnBorrar
             // 
@@ -569,7 +540,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(735, 288);
+            this.label7.Location = new System.Drawing.Point(802, 287);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 16);
@@ -580,7 +551,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1043, 288);
+            this.label12.Location = new System.Drawing.Point(1110, 287);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 16);
@@ -590,7 +561,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(723, 625);
+            this.label13.Location = new System.Drawing.Point(790, 624);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(51, 16);
@@ -600,19 +571,30 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1044, 625);
+            this.label14.Location = new System.Drawing.Point(1111, 624);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 16);
             this.label14.TabIndex = 52;
             this.label14.Text = "label14";
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(649, 472);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(28, 440);
+            this.pictureBox6.TabIndex = 53;
+            this.pictureBox6.TabStop = false;
+            // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1828, 923);
+            this.ClientSize = new System.Drawing.Size(1828, 950);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -624,9 +606,6 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.buttonBombaRec);
-            this.Controls.Add(this.buttonInfTanqueLleno);
-            this.Controls.Add(this.buttonInformePrepago);
             this.Controls.Add(this.buttonCierreCaja);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
@@ -673,6 +652,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -725,9 +705,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
 
         private System.Windows.Forms.Button buttonCierreCaja;
-        private System.Windows.Forms.Button buttonInformePrepago;
-        private System.Windows.Forms.Button buttonInfTanqueLleno;
-        private System.Windows.Forms.Button buttonBombaRec;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnLimpiar;
 
@@ -735,7 +712,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
 
