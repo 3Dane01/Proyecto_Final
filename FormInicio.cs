@@ -301,5 +301,10 @@ namespace Proyecto_Final
         {
 
         }
+
+        private void FormInicio_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
