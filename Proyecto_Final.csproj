@@ -52,6 +52,12 @@
     <Compile Include="Abastecimiento.cs" />
     <Compile Include="claseUsuario.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="FormInformes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInformes.Designer.cs">
+      <DependentUpon>FormInformes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrear.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCrear.resx">
       <DependentUpon>FormCrear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInformes.resx">
+      <DependentUpon>FormInformes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>

@@ -16,6 +16,7 @@ namespace Proyecto_Final
     //List<Cliente> clientes = new List<Cliente>();
     public partial class FormInicio : Form
     {
+
         int porcentajeBomba1 = 0;
         int porcentajeBomba2 = 0;
         int porcentajeBomba3 = 0;
@@ -24,7 +25,9 @@ namespace Proyecto_Final
 
         public FormInicio()
         {
+
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             btnBorrar.Click -= btnBorrar_Click;
             btnBorrar.Click += btnBorrar_Click;
             currentProgressBar = progressBar1; // Inicialmente, usamos la barra de progreso de Bomba 1
@@ -49,6 +52,30 @@ namespace Proyecto_Final
            
 
             string cantidadGasolin = txtCantidad.Text;
+
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("Ingrese un nombre");
+                txtNombre.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(apellido))
+            {
+                MessageBox.Show("Ingrese un apellido");
+                txtNombre.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(tipoAbastecimiento1))
+            {
+                MessageBox.Show("Ingrese un tipo de abastecimiento.");
+                comboBoxTipoAbastecimiento.Focus();
+                return;
+            }
+            if (!radioButtonBomba1.Checked && !radioButtonBomba2.Checked && !radioButtonBomba3.Checked && !radioButtonBomba4.Checked)
+            {
+                MessageBox.Show("Seleccione una bomba.");
+                return;
+            }
 
 
             if (radioButtonBomba1.Checked)
@@ -305,6 +332,18 @@ namespace Proyecto_Final
         private void FormInicio_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void buttonCierreCaja_Click(object sender, EventArgs e)
+        {
+            FormInformes formcrear2 = new FormInformes();
+            formcrear2.Show();
+            this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

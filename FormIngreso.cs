@@ -58,6 +58,7 @@ namespace Proyecto_Final
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+          
             FormCrear formcrear = new FormCrear();
             formcrear.Show();
             this.Hide();
@@ -66,6 +67,11 @@ namespace Proyecto_Final
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormIngreso_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
