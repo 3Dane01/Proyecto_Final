@@ -19,40 +19,88 @@ namespace Proyecto_Final
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            comboBoxInfo.Items.Add("");
+            comboBoxInfo.Items.Add("Cierre de caja");
+            comboBoxInfo.Items.Add("Informes de prepago");
+            comboBoxInfo.Items.Add("Informes de tanque lleno");
+            comboBoxInfo.SelectedIndex = 0;
+
+
         }
 
         private void FormInformes_Load(object sender, EventArgs e)
         {
-            comboBoxInfo.Items.Add("Cierre de Caja");
-            comboBoxInfo.Items.Add("Abastecimientos Prepago");
+            
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void CargarDatos(string opcion)
         {
-            List<Abastecimiento> abastecimientos = new List<Abastecimiento>();
+            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormInicio Inicio = new FormInicio();
+            Inicio.Show();
+            this.Hide();
+        }
+
+        private void comboBoxInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxInfo.SelectedItem.ToString())
+            {
+                case "Cierre de caja":
+                    MostrarCierreCaja();
+                    break;
+                case "Informes de prepago":
+                    MostrarInformePrepago();
+                    break;
+                case "Informes de tanque lleno":
+                    MostrarInformeTanqueLleno();
+                    break;
+            }
+        }
+
+        private void MostrarCierreCaja()
+        {
+            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = abastecimientos;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+        }
+        private void MostrarInformePrepago()
+        {
+            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+
+            var abastecimientosPrepago = abastecimientos.Where(a => a.TipoAbastecimiento == "Prepago").ToList();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = abastecimientosPrepago;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        private void MostrarInformeTanqueLleno()
+        {
+            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+
+            var abastecimientosTanqueLleno = abastecimientos.Where(a => a.TipoAbastecimiento == "Tanque Lleno").ToList();
+
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = abastecimientosTanqueLleno;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        private List<Cliente> LeerArchivoAbastecimientos()
+        {
             if (File.Exists("abastecimientos1.json"))
             {
                 string json = File.ReadAllText("abastecimientos1.json");
-                abastecimientos = JsonConvert.DeserializeObject<List<Abastecimiento>>(json) ?? new List<Abastecimiento>();
+                return JsonConvert.DeserializeObject<List<Cliente>>(json) ?? new List<Cliente>();
             }
-            List<Abastecimiento> filteredAbastecimientos = new List<Abastecimiento>();
-            if (opcion == "Cierre de Caja")
-            {
-                //filteredAbastecimientos = abastecimientos.Where(a => a.Fecha.Contains(DateTime.Now.ToString("dd/MM/yyyy"))).ToList();
-            }
-            else if (opcion == "Abastecimientos Prepago")
-            {
-                filteredAbastecimientos = abastecimientos.Where(a => a.AbastecimientoTipo == "Prepago").ToList();
-            }
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = filteredAbastecimientos;
-
+            return new List<Cliente>();
         }
     }
 }

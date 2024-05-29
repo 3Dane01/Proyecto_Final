@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -285,41 +287,37 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(794, 305);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar1.Maximum = 1000;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(303, 23);
             this.progressBar1.TabIndex = 25;
-            this.progressBar1.Minimum = 0; // Establece el valor mínimo en 0
-            this.progressBar1.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(1102, 305);
             this.progressBar2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar2.Maximum = 1000;
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(303, 23);
             this.progressBar2.TabIndex = 26;
-            this.progressBar2.Minimum = 0; // Establece el valor mínimo en 0
-            this.progressBar2.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // progressBar3
             // 
             this.progressBar3.Location = new System.Drawing.Point(787, 643);
             this.progressBar3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar3.Maximum = 1000;
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(303, 23);
             this.progressBar3.TabIndex = 27;
-            this.progressBar3.Minimum = 0; // Establece el valor mínimo en 0
-            this.progressBar3.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // progressBar4
             // 
             this.progressBar4.Location = new System.Drawing.Point(1115, 643);
             this.progressBar4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar4.Maximum = 1000;
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(303, 23);
             this.progressBar4.TabIndex = 28;
-            this.progressBar4.Minimum = 0; // Establece el valor mínimo en 0
-            this.progressBar4.Maximum = 1000; // Establece el valor máximo en 1000
             // 
             // button2
             // 
@@ -331,7 +329,6 @@
             this.button2.Text = "Regresar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-
             // 
             // label11
             // 
@@ -552,9 +549,9 @@
             this.label7.Location = new System.Drawing.Point(802, 287);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 16);
+            this.label7.Size = new System.Drawing.Size(35, 16);
             this.label7.TabIndex = 49;
-            this.label7.Text = "label7";
+            this.label7.Text = "1000";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label12
@@ -563,9 +560,9 @@
             this.label12.Location = new System.Drawing.Point(1110, 287);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 16);
+            this.label12.Size = new System.Drawing.Size(35, 16);
             this.label12.TabIndex = 50;
-            this.label12.Text = "label12";
+            this.label12.Text = "1000";
             // 
             // label13
             // 
@@ -573,9 +570,9 @@
             this.label13.Location = new System.Drawing.Point(790, 624);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 16);
+            this.label13.Size = new System.Drawing.Size(35, 16);
             this.label13.TabIndex = 51;
-            this.label13.Text = "label13";
+            this.label13.Text = "1000";
             // 
             // label14
             // 
@@ -583,9 +580,9 @@
             this.label14.Location = new System.Drawing.Point(1111, 624);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(51, 16);
+            this.label14.Size = new System.Drawing.Size(35, 16);
             this.label14.TabIndex = 52;
-            this.label14.Text = "label14";
+            this.label14.Text = "1000";
             // 
             // pictureBox6
             // 
@@ -722,6 +719,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
