@@ -28,6 +28,7 @@ namespace Proyecto_Final
             }
         }
 
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string nombreUsuario = txtUsuario.Text;
