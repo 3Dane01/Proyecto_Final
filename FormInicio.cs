@@ -114,6 +114,7 @@ namespace Proyecto_Final
 
             int cantidadProgreso = 0;
 
+
             if (string.IsNullOrWhiteSpace(nombre))
             {
                 MessageBox.Show("Ingrese un nombre");

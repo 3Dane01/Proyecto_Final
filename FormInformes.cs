@@ -10,7 +10,7 @@ namespace Proyecto_Final
 {
     public partial class FormInformes : Form
     {
-        private BindingList<Cliente> abastecimientos;
+        private List<Cliente> abastecimientos;
 
         public FormInformes()
         {
@@ -67,7 +67,7 @@ namespace Proyecto_Final
 
         private void MostrarCierreCaja()
         {
-            abastecimientos = new BindingList<Cliente>(LeerArchivoAbastecimientos());
+            abastecimientos = new List<Cliente>(LeerArchivoAbastecimientos());
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = abastecimientos;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -75,7 +75,7 @@ namespace Proyecto_Final
 
         private void MostrarInformePrepago()
         {
-            abastecimientos = new BindingList<Cliente>(LeerArchivoAbastecimientos().Where(a => a.TipoAbastecimiento == "Prepago").ToList());
+            abastecimientos = new List<Cliente>(LeerArchivoAbastecimientos().Where(a => a.TipoAbastecimiento == "Prepago").ToList());
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = abastecimientos;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -83,7 +83,7 @@ namespace Proyecto_Final
 
         private void MostrarInformeTanqueLleno()
         {
-            abastecimientos = new BindingList<Cliente>(LeerArchivoAbastecimientos().Where(a => a.TipoAbastecimiento == "Tanque Lleno").ToList());
+            abastecimientos = new List<Cliente>(LeerArchivoAbastecimientos().Where(a => a.TipoAbastecimiento == "Tanque Lleno").ToList());
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = abastecimientos;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -92,8 +92,7 @@ namespace Proyecto_Final
         private void MostrarInformedeCadaTanque()
         {
             List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
-
-            // Contadores para cada bomba
+            
             int contadorRegular = 0;
             int contadorSuper = 0;
             int contadorDiesel = 0;
@@ -119,7 +118,6 @@ namespace Proyecto_Final
                 }
             }
 
-            // Encontrar la bomba más utilizada
             int maxUsos = contadorRegular;
             string bombaMasUtilizada = "Regular";
 
@@ -139,7 +137,6 @@ namespace Proyecto_Final
                 bombaMasUtilizada = "VPower";
             }
 
-            // Encontrar la bomba menos utilizada
             int minUsos = contadorRegular;
             string bombaMenosUtilizada = "Regular";
 
@@ -159,14 +156,12 @@ namespace Proyecto_Final
                 bombaMenosUtilizada = "VPower";
             }
 
-            // Crear una lista para mostrar en el DataGridView
             var resultados = new List<BombaResultado>
             {
                 new BombaResultado { Bomba = "Bomba más utilizada", Cantidad = bombaMasUtilizada },
                 new BombaResultado { Bomba = "Bomba menos utilizada", Cantidad = bombaMenosUtilizada }
             };
 
-            // Mostrar los datos en el DataGridView
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = resultados;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -206,6 +201,11 @@ namespace Proyecto_Final
         {
             string json = JsonConvert.SerializeObject(abastecimientos, Formatting.Indented);
             File.WriteAllText("abastecimientos1.json", json);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     }
