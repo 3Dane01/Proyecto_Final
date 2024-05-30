@@ -29,7 +29,8 @@ namespace Proyecto_Final
 
         public bool TimerActivo { get; set; }
         */
-
+        public string CantidadFaltante { get; set; }
         public int CantidadRestante { get; set; }
+
     }
 }

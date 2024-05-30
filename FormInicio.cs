@@ -18,6 +18,10 @@ namespace Proyecto_Final
     //List<Cliente> clientes = new List<Cliente>();
     public partial class FormInicio : Form
     {
+        private Timer reductionTimer;
+        private int reductionAmount;
+
+
         private Timer timer;
         private int cantidadAConsumir;
         private int cantidadReducidaPorTick;
@@ -41,6 +45,8 @@ namespace Proyecto_Final
             timer = new Timer();
             timer.Interval = 1000; // Intervalo de 1 segundo (1000 ms)
             timer.Tick += Timer_Tick;
+
+            comboBoxTipoAbastecimiento.SelectedIndexChanged += comboBoxTipoAbastecimiento_SelectedIndexChanged;
 
             CargarDatos();
         }
@@ -104,8 +110,8 @@ namespace Proyecto_Final
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
-            string cantidad = txtCantidad.Text;
             string nombreBomba = "";
+
             int cantidadProgreso = 0;
 
             if (string.IsNullOrWhiteSpace(nombre))
@@ -152,23 +158,24 @@ namespace Proyecto_Final
                 nombreBomba = "VPower";
                 currentProgressBar = progressBarVpower;
             }
-            if (tipoAbastecimiento1 == "Tanque lleno")
+
+            if (!int.TryParse(txtCantidad.Text, out cantidadProgreso))
             {
-                cantidadProgreso = currentProgressBar.Maximum - currentProgressBar.Value;
+                MessageBox.Show("Por favor, ingrese una cantidad válida.");
+                return;
+            }
+
+            int cantidadDisponible = currentProgressBar.Value;
+            int cantidadFaltante = cantidadProgreso - cantidadDisponible;
+
+            if (cantidadFaltante > 0)
+            {
+                cantidadProgreso = cantidadDisponible;
+                MessageBox.Show($"No hay suficiente combustible. Se entregaron {cantidadDisponible} lts y faltaron {cantidadFaltante} lts.");
             }
             else
             {
-                if (!int.TryParse(txtCantidad.Text, out cantidadProgreso))
-                {
-                    MessageBox.Show("Por favor, ingrese una cantidad válida.");
-                    return;
-                }
-            }
-
-            if (cantidadProgreso > currentProgressBar.Value)
-            {
-                MessageBox.Show("No se puede ingresar esa cantidad, el tanque ya está vacío.");
-                return;
+                cantidadFaltante = 0;
             }
 
             var abastecimiento = new Cliente
@@ -177,23 +184,23 @@ namespace Proyecto_Final
                 Apellido = apellido,
                 TipoAbastecimiento = tipoAbastecimiento1,
                 BombaSeleccionada = nombreBomba,
-                CantidadAbastecer = cantidad,
-                Fecha = DateTime.Now,
-                CantidadRestante = currentProgressBar.Value  // Guardar la cantidad restante actual
+                CantidadAbastecer = cantidadProgreso.ToString(),
+                Fecha = DateTime.Now
             };
 
             List<Cliente> abastecimientos1 = LeerArchivoAbastecimientos();
             abastecimientos1.Add(abastecimiento);
             GuardarArchivoAbastecimientos(abastecimientos1);
 
-            // Iniciar el Timer y actualizar barras de progreso y labels
-            cantidadAConsumir = cantidadProgreso;
-            cantidadReducidaPorTick = cantidadProgreso / 10; // Ajusta esto según sea necesario
-            if (cantidadReducidaPorTick == 0) cantidadReducidaPorTick = 1;
+            int cantidadCombustible = ObtenerCantidadIngresada();
+            int costoPorLitro = 10; // Costo por litro en quetzales
+            int cantidadAPagar = cantidadCombustible * costoPorLitro;
 
-            timer.Start();
+            // Muestra la cantidad a pagar en el label
+            label19.Text = cantidadAPagar.ToString() + " Q.";
 
-            MessageBox.Show("Información Guardada");
+            ReducirBarraDeProgreso(cantidadProgreso);
+
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
             comboBoxTipoAbastecimiento.SelectedIndex = -1;
@@ -202,49 +209,73 @@ namespace Proyecto_Final
             radioButtonBombaDiesel.Checked = false;
             radioButtonBombaVPower.Checked = false;
             txtCantidad.Text = string.Empty;
-
-            ObtenerPrecioDelDia();
-
         }
 
-        private decimal ObtenerPrecioDelDia()
+        private void comboBoxTipoAbastecimiento_SelectedIndexChanged(object sender, EventArgs e)
         {
-       
-            decimal precioPorLitro = 10M;
+            if (comboBoxTipoAbastecimiento.SelectedItem != null)
+            {
+                string selectedItem = comboBoxTipoAbastecimiento.SelectedItem.ToString();
 
-            return precioPorLitro;
+                if (selectedItem == "Prepago")
+                {
+                    label15.Text = "Q.";
+                }
+                else if (selectedItem == "Tanque Lleno")
+                {
+                    label15.Text = "lts";
+                }
+            }
         }
-
 
         private void ReducirBarraDeProgreso(int cantidad)
         {
             if (currentProgressBar != null)
             {
-                int nuevaCantidad = currentProgressBar.Value - cantidad;
-                currentProgressBar.Value = Math.Max(0, nuevaCantidad);
+                reductionAmount = cantidad;
+                reductionTimer = new Timer();
+                reductionTimer.Interval = 100; // Ajusta el intervalo según sea necesario (más rápido)
+                reductionTimer.Tick += new EventHandler(ReductionTimer_Tick);
+                reductionTimer.Start();
+            }
+        }
+        private void ReductionTimer_Tick(object sender, EventArgs e)
+        {
+            if (currentProgressBar.Value > 0 && reductionAmount > 0)
+            {
+                currentProgressBar.Value = Math.Max(0, currentProgressBar.Value - 1);
+                reductionAmount--;
 
                 switch (currentProgressBar.Name)
                 {
                     case "progressBarRegular":
                         label7.Text = $"{currentProgressBar.Value} lts";
                         break;
-                    case "progressBarDiesel":
-                        label12.Text = $"{currentProgressBar.Value} lts";
-                        break;
                     case "progressBarSuper":
                         label13.Text = $"{currentProgressBar.Value} lts";
+                        break;
+                    case "progressBarDiesel":
+                        label12.Text = $"{currentProgressBar.Value} lts";
                         break;
                     case "progressBarVpower":
                         label14.Text = $"{currentProgressBar.Value} lts";
                         break;
-                    default:
-                        break;
                 }
+
+                if (currentProgressBar.Value == 0 || reductionAmount == 0)
+                {
+                    reductionTimer.Stop();
+                    reductionTimer.Dispose();
+                }
+            }
+            else
+            {
+                reductionTimer.Stop();
+                reductionTimer.Dispose();
             }
         }
 
 
-        
 
         private int ObtenerCantidadIngresada()
         {
@@ -276,11 +307,6 @@ namespace Proyecto_Final
             GuardarArchivoAbastecimientos(clientes);
         }
 
-
-        private void NotificarPanelCentral(Cliente cliente, int cantidadServida)
-        {
-            MessageBox.Show($"Cliente: {cliente.Nombre} {cliente.Apellido}, Cantidad Servida: {cantidadServida} litros.");
-        }
 
         private void label6_Click(object sender, EventArgs e)
         {
