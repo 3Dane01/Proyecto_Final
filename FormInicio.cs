@@ -29,10 +29,10 @@ namespace Proyecto_Final
             this.StartPosition = FormStartPosition.CenterScreen;
             btnBorrar.Click -= btnBorrar_Click;
             btnBorrar.Click += btnBorrar_Click;
-            progressBar1.Value = progressBar1.Maximum;
-            progressBar2.Value = progressBar2.Maximum;
-            progressBar3.Value = progressBar3.Maximum;
-            progressBar4.Value = progressBar4.Maximum;
+            progressBarRegular.Value = progressBarRegular.Maximum;
+            progressBarDiesel.Value = progressBarDiesel.Maximum;
+            progressBarSuper.Value = progressBarSuper.Maximum;
+            progressBarVpower.Value = progressBarVpower.Maximum;
 
         }
 
@@ -53,7 +53,7 @@ namespace Proyecto_Final
             string apellido = txtApellido.Text;
             string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
             string cantidad = txtCantidad.Text;
-            int numeroBomba = 0;
+            string nombreBomba = "";
 
             int cantidadProgreso = 0;
 
@@ -75,31 +75,31 @@ namespace Proyecto_Final
                 comboBoxTipoAbastecimiento.Focus();
                 return;
             }
-            if (!radioButtonBomba1.Checked && !radioButtonBomba2.Checked && !radioButtonBomba3.Checked && !radioButtonBomba4.Checked)
+            if (!radioButtonBombaRegular.Checked && !radioButtonBombaSuper.Checked && !radioButtonBombaDiesel.Checked && !radioButtonBombaVPower.Checked)
             {
                 MessageBox.Show("Seleccione una bomba.");
                 return;
             }
 
-            if (radioButtonBomba1.Checked)
+            if (radioButtonBombaRegular.Checked)
             {
-                numeroBomba = 1;
-                currentProgressBar = progressBar1;
+                nombreBomba = "Regular";
+                currentProgressBar = progressBarRegular;
             }
-            else if (radioButtonBomba2.Checked)
+            else if (radioButtonBombaSuper.Checked)
             {
-                numeroBomba = 2;
-                currentProgressBar = progressBar2;
+                nombreBomba = "Super";
+                currentProgressBar = progressBarDiesel;
             }
-            else if (radioButtonBomba3.Checked)
+            else if (radioButtonBombaDiesel.Checked)
             {
-                numeroBomba = 3;
-                currentProgressBar = progressBar3;
+                nombreBomba = "Diesel";
+                currentProgressBar = progressBarSuper;
             }
-            else if (radioButtonBomba4.Checked)
+            else if (radioButtonBombaVPower.Checked)
             {
-                numeroBomba = 4;
-                currentProgressBar = progressBar4;
+                nombreBomba = "VPower";
+                currentProgressBar = progressBarVpower;
             }
             if (tipoAbastecimiento1 == "Tanque lleno")
             {
@@ -131,7 +131,7 @@ namespace Proyecto_Final
                 Nombre = nombre,
                 Apellido = apellido,
                 TipoAbastecimiento = tipoAbastecimiento1,
-                BombaSeleccionada = numeroBomba,
+                BombaSeleccionada = nombreBomba,
                 CantidadAbastecer = cantidad,
                 Fecha = DateTime.Now
             };
@@ -139,14 +139,14 @@ namespace Proyecto_Final
             List<Cliente> abastecimientos1 = LeerArchivoAbastecimientos();
             abastecimientos1.Add(abastecimiento);
             GuardarArchivoAbastecimientos(abastecimientos1);
-
+            MessageBox.Show("Información Guardada");
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
             comboBoxTipoAbastecimiento.SelectedIndex = -1;
-            radioButtonBomba1.Checked = false;
-            radioButtonBomba2.Checked = false;
-            radioButtonBomba3.Checked = false;
-            radioButtonBomba4.Checked = false;
+            radioButtonBombaRegular.Checked = false;
+            radioButtonBombaSuper.Checked = false;
+            radioButtonBombaDiesel.Checked = false;
+            radioButtonBombaVPower.Checked = false;
             txtCantidad.Text = string.Empty;
         }
 
@@ -206,21 +206,21 @@ namespace Proyecto_Final
             comboBoxTipoAbastecimiento.Items.Add("Prepago");
             comboBoxTipoAbastecimiento.Items.Add("Tanque lleno");
 
-            if (currentProgressBar == progressBar1)
+            if (currentProgressBar == progressBarRegular)
             {
-                currentProgressBar = progressBar2;
+                currentProgressBar = progressBarDiesel;
             }
-            else if (currentProgressBar == progressBar2)
+            else if (currentProgressBar == progressBarDiesel)
             {
-                currentProgressBar = progressBar3;
+                currentProgressBar = progressBarSuper;
             }
-            else if (currentProgressBar == progressBar3)
+            else if (currentProgressBar == progressBarSuper)
             {
-                currentProgressBar = progressBar4;
+                currentProgressBar = progressBarVpower;
             }
             else
             {
-                currentProgressBar = progressBar1;
+                currentProgressBar = progressBarRegular;
             }
         }
 
@@ -334,21 +334,21 @@ namespace Proyecto_Final
             {
                 switch (abastecimiento.BombaSeleccionada)
                 {
-                    case 1:
-                        progressBar1.Value = Math.Max(0, progressBar1.Value - int.Parse(abastecimiento.CantidadAbastecer));
-                        label7.Text = $"{progressBar1.Value} lts";
+                    case "Regular":
+                        progressBarRegular.Value = Math.Max(0, progressBarRegular.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label7.Text = $"{progressBarRegular.Value} lts";
                         break;
-                    case 2:
-                        progressBar2.Value = Math.Max(0, progressBar2.Value - int.Parse(abastecimiento.CantidadAbastecer));
-                        label12.Text = $"{progressBar2.Value} lts";
+                    case "Diesel":
+                        progressBarDiesel.Value = Math.Max(0, progressBarDiesel.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label12.Text = $"{progressBarDiesel.Value} lts";
                         break;
-                    case 3:
-                        progressBar3.Value = Math.Max(0, progressBar3.Value - int.Parse(abastecimiento.CantidadAbastecer));
-                        label13.Text = $"{progressBar3.Value} lts";
+                    case "Super":
+                        progressBarSuper.Value = Math.Max(0, progressBarSuper.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label13.Text = $"{progressBarSuper.Value} lts";
                         break;
-                    case 4:
-                        progressBar4.Value = Math.Max(0, progressBar4.Value - int.Parse(abastecimiento.CantidadAbastecer));
-                        label14.Text = $"{progressBar4.Value} lts";
+                    case "VPower":
+                        progressBarVpower.Value = Math.Max(0, progressBarVpower.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        label14.Text = $"{progressBarVpower.Value} lts";
                         break;
                 }
             }

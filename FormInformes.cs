@@ -24,6 +24,7 @@ namespace Proyecto_Final
             comboBoxInfo.Items.Add("Cierre de caja");
             comboBoxInfo.Items.Add("Informes de prepago");
             comboBoxInfo.Items.Add("Informes de tanque lleno");
+            comboBoxInfo.Items.Add("Informes de tanques");
             comboBoxInfo.SelectedIndex = 0;
 
 
@@ -31,12 +32,12 @@ namespace Proyecto_Final
 
         private void FormInformes_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void CargarDatos(string opcion)
         {
-            
+
 
         }
 
@@ -59,6 +60,9 @@ namespace Proyecto_Final
                     break;
                 case "Informes de tanque lleno":
                     MostrarInformeTanqueLleno();
+                    break;
+                case "Informes de tanques":
+                    MostrarInformedeCadaTanque();
                     break;
             }
         }
@@ -92,6 +96,90 @@ namespace Proyecto_Final
             dataGridView1.DataSource = abastecimientosTanqueLleno;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+
+        private void MostrarInformedeCadaTanque()
+        {
+            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+
+            // Contadores para cada bomba
+            int contadorRegular = 0;
+            int contadorSuper = 0;
+            int contadorDiesel = 0;
+            int contadorVPower = 0;
+
+            // Contar el uso de cada bomba
+            foreach (var abastecimiento in abastecimientos)
+            {
+                switch (abastecimiento.BombaSeleccionada)
+                {
+                    case "Regular":
+                        contadorRegular++;
+                        break;
+                    case "Super":
+                        contadorSuper++;
+                        break;
+                    case "Diesel":
+                        contadorDiesel++;
+                        break;
+                    case "VPower":
+                        contadorVPower++;
+                        break;
+                }
+            }
+
+            // Encontrar la bomba más utilizada
+            int maxUsos = contadorRegular;
+            string bombaMasUtilizada = "Regular";
+
+            if (contadorSuper > maxUsos)
+            {
+                maxUsos = contadorSuper;
+                bombaMasUtilizada = "Super";
+            }
+            if (contadorDiesel > maxUsos)
+            {
+                maxUsos = contadorDiesel;
+                bombaMasUtilizada = "Diesel";
+            }
+            if (contadorVPower > maxUsos)
+            {
+                maxUsos = contadorVPower;
+                bombaMasUtilizada = "VPower";
+            }
+
+            // Encontrar la bomba menos utilizada
+            int minUsos = contadorRegular;
+            string bombaMenosUtilizada = "Regular";
+
+            if (contadorSuper < minUsos)
+            {
+                minUsos = contadorSuper;
+                bombaMenosUtilizada = "Super";
+            }
+            if (contadorDiesel < minUsos)
+            {
+                minUsos = contadorDiesel;
+                bombaMenosUtilizada = "Diesel";
+            }
+            if (contadorVPower < minUsos)
+            {
+                minUsos = contadorVPower;
+                bombaMenosUtilizada = "VPower";
+            }
+
+            // Crear una lista para mostrar en el DataGridView
+            var resultados = new List<BombaResultado>
+            {
+                new BombaResultado { Bomba = "Bomba más utilizada", Cantidad = bombaMasUtilizada },
+                new BombaResultado { Bomba = "Bomba menos utilizada", Cantidad = bombaMenosUtilizada }
+            };
+
+            // Mostrar los datos en el DataGridView
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = resultados;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
 
         private List<Cliente> LeerArchivoAbastecimientos()
         {
