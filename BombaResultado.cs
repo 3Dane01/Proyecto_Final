@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Final
 {
-    internal class BombaUtilizada
+    internal class BombaResultado
     {
             public string Bomba { get; set; }
-            public int Cantidad { get; set; }
+            public string Cantidad { get; set; }
         }
 
 
