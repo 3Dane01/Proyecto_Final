@@ -310,37 +310,6 @@ namespace Proyecto_Final
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            txtNombre.Clear();
-            txtApellido.Clear();
-            txtCantidad.Clear();
-
-            comboBoxTipoAbastecimiento.Items.Clear();
-            comboBoxTipoAbastecimiento.Text = "";
-            comboBoxTipoAbastecimiento.Items.Add("Prepago");
-            comboBoxTipoAbastecimiento.Items.Add("Tanque lleno");
-
-            if (currentProgressBar == progressBarRegular)
-            {
-                currentProgressBar = progressBarDiesel;
-            }
-            else if (currentProgressBar == progressBarDiesel)
-            {
-                currentProgressBar = progressBarSuper;
-            }
-            else if (currentProgressBar == progressBarSuper)
-            {
-                currentProgressBar = progressBarVpower;
-            }
-            else
-            {
-                currentProgressBar = progressBarRegular;
-            }
-        }
-
-
-
         private void button2_Click(object sender, EventArgs e)
         {
             GuardarDatos();
@@ -348,10 +317,7 @@ namespace Proyecto_Final
             regresar.Show();
             this.Hide();
         }
-        private void AgregarMonto(string monto)
-        {
-            txtCantidad.Text += monto;
-        }
+       
 
         private void button4_Click(object sender, EventArgs e)
         {
