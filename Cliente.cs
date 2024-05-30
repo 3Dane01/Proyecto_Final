@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,12 @@ namespace Proyecto_Final
         public string CantidadAbastecer { get => cantidadAbastecer; set => cantidadAbastecer = value; }
         public string BombaSeleccionada { get => bombaSeleccionada; set => bombaSeleccionada = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
+        /*
+        public int CantidadRestante { get; set; }
+
+        public bool TimerActivo { get; set; }
+        */
+
+        public int CantidadRestante { get; set; }
     }
 }
