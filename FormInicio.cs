@@ -18,7 +18,7 @@ namespace Proyecto_Final
     //List<Cliente> clientes = new List<Cliente>();
     public partial class FormInicio : Form
     {
-
+        const decimal precioL=10M;
         int CANTIDAD_INICIAL = 1000;
         System.Windows.Forms.ProgressBar currentProgressBar;
 
@@ -101,16 +101,40 @@ namespace Proyecto_Final
                 nombreBomba = "VPower";
                 currentProgressBar = progressBarVpower;
             }
+
             if (tipoAbastecimiento1 == "Tanque lleno")
             {
                 cantidadProgreso = currentProgressBar.Maximum - currentProgressBar.Value;
+                NotificarPanelCentral(new Cliente { Nombre = nombre, Apellido = apellido }, cantidadProgreso);
+
+               
+                decimal precioPorLitro = ObtenerPrecioDelDia();
+                decimal totalPagar = cantidadProgreso * precioPorLitro;
+                MessageBox.Show($"Total a pagar: Q{totalPagar}");
             }
             else
             {
-                if (!int.TryParse(txtCantidad.Text, out cantidadProgreso))
+                if (!decimal.TryParse(txtCantidad.Text, out decimal montoPagado))
                 {
                     MessageBox.Show("Por favor, ingrese una cantidad válida.");
                     return;
+                }
+
+                cantidadProgreso = (int)CalcularCantidadGasolina(montoPagado);
+
+                if (cantidadProgreso > currentProgressBar.Value)
+                {
+                    int cantidadRestante = cantidadProgreso - currentProgressBar.Value;
+                    ActualizarRegistroPrepago(new Cliente
+                    {
+                        Nombre = nombre,
+                        Apellido = apellido,
+                        TipoAbastecimiento = tipoAbastecimiento1,
+                        BombaSeleccionada = nombreBomba,
+                        CantidadAbastecer = cantidadRestante.ToString(),
+                        Fecha = DateTime.Now
+                    }, cantidadRestante);
+                    cantidadProgreso = currentProgressBar.Value;
                 }
             }
 
@@ -146,6 +170,17 @@ namespace Proyecto_Final
             radioButtonBombaDiesel.Checked = false;
             radioButtonBombaVPower.Checked = false;
             txtCantidad.Text = string.Empty;
+
+            ObtenerPrecioDelDia();
+
+        }
+
+        private decimal ObtenerPrecioDelDia()
+        {
+       
+            decimal precioPorLitro = 10M;
+
+            return precioPorLitro;
         }
 
 
@@ -177,6 +212,8 @@ namespace Proyecto_Final
         }
 
 
+        
+
         private int ObtenerCantidadIngresada()
         {
             int cantidad;
@@ -186,6 +223,35 @@ namespace Proyecto_Final
                 return 0;
             }
             return cantidad;
+        }
+
+        private decimal CalcularCantidadGasolina(decimal montoPagado)
+        {
+            return montoPagado / precioL;
+        }
+
+        private void ActualizarRegistroPrepago(Cliente cliente, int cantidadRestante)
+        {
+            List<Cliente> clientes = LeerArchivoAbastecimientos();
+            var clienteExistente = clientes.FirstOrDefault(c => c.Nombre == cliente.Nombre && c.Apellido == cliente.Apellido && c.Fecha.Date == cliente.Fecha.Date);
+
+            if (clienteExistente != null)
+            {
+                clienteExistente.CantidadAbastecer = cantidadRestante.ToString();
+            }
+            else
+            {
+                cliente.CantidadAbastecer = cantidadRestante.ToString();
+                clientes.Add(cliente);
+            }
+
+            GuardarArchivoAbastecimientos(clientes);
+        }
+
+
+        private void NotificarPanelCentral(Cliente cliente, int cantidadServida)
+        {
+            MessageBox.Show($"Cliente: {cliente.Nombre} {cliente.Apellido}, Cantidad Servida: {cantidadServida} litros.");
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -230,6 +296,10 @@ namespace Proyecto_Final
             FormIngreso regresar = new FormIngreso();
             regresar.Show();
             this.Hide();
+        }
+        private void AgregarMonto(string monto)
+        {
+            txtCantidad.Text += monto;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -385,6 +455,11 @@ namespace Proyecto_Final
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
