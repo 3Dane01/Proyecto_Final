@@ -629,6 +629,7 @@
             this.label17.Size = new System.Drawing.Size(134, 20);
             this.label17.TabIndex = 56;
             this.label17.Text = "1 Litro = Q.10.00";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // FormInicio
             // 
