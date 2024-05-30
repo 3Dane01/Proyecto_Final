@@ -18,6 +18,10 @@ namespace Proyecto_Final
     //List<Cliente> clientes = new List<Cliente>();
     public partial class FormInicio : Form
     {
+        private Timer timer;
+        private int cantidadAConsumir;
+        private int cantidadReducidaPorTick;
+
         const decimal precioL=10M;
         int CANTIDAD_INICIAL = 1000;
         System.Windows.Forms.ProgressBar currentProgressBar;
@@ -34,6 +38,10 @@ namespace Proyecto_Final
             progressBarSuper.Value = progressBarSuper.Maximum;
             progressBarVpower.Value = progressBarVpower.Maximum;
 
+            timer = new Timer();
+            timer.Interval = 1000; // Intervalo de 1 segundo (1000 ms)
+            timer.Tick += Timer_Tick;
+
             CargarDatos();
         }
 
@@ -47,6 +55,48 @@ namespace Proyecto_Final
             GuardarDatos();
             Application.Exit();
         }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+
+            if (cantidadAConsumir > 0)
+            {
+                int decremento = Math.Min(cantidadReducidaPorTick, cantidadAConsumir);
+                currentProgressBar.Value = Math.Max(0, currentProgressBar.Value - decremento);
+                cantidadAConsumir -= decremento;
+
+                switch (currentProgressBar.Name)
+                {
+                    case "progressBarRegular":
+                        label7.Text = $"{currentProgressBar.Value} lts";
+                        break;
+                    case "progressBarDiesel":
+                        label12.Text = $"{currentProgressBar.Value} lts";
+                        break;
+                    case "progressBarSuper":
+                        label13.Text = $"{currentProgressBar.Value} lts";
+                        break;
+                    case "progressBarVpower":
+                        label14.Text = $"{currentProgressBar.Value} lts";
+                        break;
+                }
+
+                if (cantidadAConsumir == 0)
+                {
+                    List<Cliente> abastecimientos1 = LeerArchivoAbastecimientos();
+                    var cliente = abastecimientos1.FirstOrDefault(c => c.BombaSeleccionada == currentProgressBar.Name);
+                    if (cliente != null)
+                    {
+                        cliente.CantidadRestante = currentProgressBar.Value;
+                        GuardarArchivoAbastecimientos(abastecimientos1);
+                    }
+                    timer.Stop();
+                }
+            }
+        }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -138,12 +188,11 @@ namespace Proyecto_Final
                 }
             }
 
-            if (ObtenerCantidadIngresada() > currentProgressBar.Value)
+            if (cantidadProgreso > currentProgressBar.Value)
             {
                 MessageBox.Show("No se puede ingresar esa cantidad, el tanque ya está vacío.");
                 return;
             }
-
             var abastecimiento = new Cliente
             {
                 Nombre = nombre,
@@ -151,15 +200,20 @@ namespace Proyecto_Final
                 TipoAbastecimiento = tipoAbastecimiento1,
                 BombaSeleccionada = nombreBomba,
                 CantidadAbastecer = cantidad,
-                Fecha = DateTime.Now
+                Fecha = DateTime.Now,
+                CantidadRestante = currentProgressBar.Value  // Guardar la cantidad restante actual
             };
 
             List<Cliente> abastecimientos1 = LeerArchivoAbastecimientos();
             abastecimientos1.Add(abastecimiento);
             GuardarArchivoAbastecimientos(abastecimientos1);
 
-            // Actualizar barra de progreso y labels
-            ReducirBarraDeProgreso(cantidadProgreso);
+            // Iniciar el Timer y actualizar barras de progreso y labels
+            cantidadAConsumir = cantidadProgreso;
+            cantidadReducidaPorTick = cantidadProgreso / 10; // Ajusta esto según sea necesario
+            if (cantidadReducidaPorTick == 0) cantidadReducidaPorTick = 1;
+
+            timer.Start();
 
             MessageBox.Show("Información Guardada");
             txtNombre.Text = string.Empty;
@@ -393,29 +447,48 @@ namespace Proyecto_Final
         private void GuardarDatos()
         {
             List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
+            foreach (var cliente in abastecimientos)
+            {
+                switch (cliente.BombaSeleccionada)
+                {
+                    case "Regular":
+                        cliente.CantidadRestante = progressBarRegular.Value;
+                        break;
+                    case "Diesel":
+                        cliente.CantidadRestante = progressBarDiesel.Value;
+                        break;
+                    case "Super":
+                        cliente.CantidadRestante = progressBarSuper.Value;
+                        break;
+                    case "VPower":
+                        cliente.CantidadRestante = progressBarVpower.Value;
+                        break;
+                }
+            }
             GuardarArchivoAbastecimientos(abastecimientos);
         }
+
         private void CargarDatos()
         {
             List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
-            foreach (var abastecimiento in abastecimientos)
+            foreach (var cliente in abastecimientos)
             {
-                switch (abastecimiento.BombaSeleccionada)
+                switch (cliente.BombaSeleccionada)
                 {
                     case "Regular":
-                        progressBarRegular.Value = Math.Max(0, progressBarRegular.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        progressBarRegular.Value = cliente.CantidadRestante;
                         label7.Text = $"{progressBarRegular.Value} lts";
                         break;
                     case "Diesel":
-                        progressBarDiesel.Value = Math.Max(0, progressBarDiesel.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        progressBarDiesel.Value = cliente.CantidadRestante;
                         label12.Text = $"{progressBarDiesel.Value} lts";
                         break;
                     case "Super":
-                        progressBarSuper.Value = Math.Max(0, progressBarSuper.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        progressBarSuper.Value = cliente.CantidadRestante;
                         label13.Text = $"{progressBarSuper.Value} lts";
                         break;
                     case "VPower":
-                        progressBarVpower.Value = Math.Max(0, progressBarVpower.Value - int.Parse(abastecimiento.CantidadAbastecer));
+                        progressBarVpower.Value = cliente.CantidadRestante;
                         label14.Text = $"{progressBarVpower.Value} lts";
                         break;
                 }
