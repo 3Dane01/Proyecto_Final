@@ -2,19 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Proyecto_Final
 {
     public partial class FormInformes : Form
     {
+        private BindingList<Cliente> abastecimientos;
+
         public FormInformes()
         {
             InitializeComponent();
@@ -27,7 +24,8 @@ namespace Proyecto_Final
             comboBoxInfo.Items.Add("Informes de tanques");
             comboBoxInfo.SelectedIndex = 0;
 
-
+            // Agregar el manejador del evento Click para el botón Eliminar
+            buttonEliminar.Click += new EventHandler(this.buttonEliminar_Click);
         }
 
         private void FormInformes_Load(object sender, EventArgs e)
@@ -69,31 +67,25 @@ namespace Proyecto_Final
 
         private void MostrarCierreCaja()
         {
-            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
-
+            abastecimientos = new BindingList<Cliente>(LeerArchivoAbastecimientos());
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = abastecimientos;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
         }
+
         private void MostrarInformePrepago()
         {
-            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
-
-            var abastecimientosPrepago = abastecimientos.Where(a => a.TipoAbastecimiento == "Prepago").ToList();
+            abastecimientos = new BindingList<Cliente>(LeerArchivoAbastecimientos().Where(a => a.TipoAbastecimiento == "Prepago").ToList());
             dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = abastecimientosPrepago;
+            dataGridView1.DataSource = abastecimientos;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void MostrarInformeTanqueLleno()
         {
-            List<Cliente> abastecimientos = LeerArchivoAbastecimientos();
-
-            var abastecimientosTanqueLleno = abastecimientos.Where(a => a.TipoAbastecimiento == "Tanque Lleno").ToList();
-
+            abastecimientos = new BindingList<Cliente>(LeerArchivoAbastecimientos().Where(a => a.TipoAbastecimiento == "Tanque Lleno").ToList());
             dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = abastecimientosTanqueLleno;
+            dataGridView1.DataSource = abastecimientos;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
@@ -190,5 +182,31 @@ namespace Proyecto_Final
             }
             return new List<Cliente>();
         }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Obtener el índice de la fila seleccionada
+                int rowIndex = dataGridView1.SelectedRows[0].Index;
+
+                // Eliminar la fila del BindingList
+                abastecimientos.RemoveAt(rowIndex);
+
+                // Guardar los cambios en el archivo JSON
+                GuardarArchivoAbastecimientos(abastecimientos.ToList());
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una fila para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void GuardarArchivoAbastecimientos(List<Cliente> abastecimientos)
+        {
+            string json = JsonConvert.SerializeObject(abastecimientos, Formatting.Indented);
+            File.WriteAllText("abastecimientos1.json", json);
+        }
     }
-}
+    }
+   

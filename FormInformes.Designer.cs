@@ -33,6 +33,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBoxInfo = new System.Windows.Forms.ComboBox();
+            this.buttonEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,12 +86,22 @@
             this.comboBoxInfo.TabIndex = 5;
             this.comboBoxInfo.SelectedIndexChanged += new System.EventHandler(this.comboBoxInfo_SelectedIndexChanged);
             // 
+            // buttonEliminar
+            // 
+            this.buttonEliminar.Location = new System.Drawing.Point(50, 258);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(118, 47);
+            this.buttonEliminar.TabIndex = 6;
+            this.buttonEliminar.Text = "Borrar columna";
+            this.buttonEliminar.UseVisualStyleBackColor = true;
+            // 
             // FormInformes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1306, 644);
+            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.comboBoxInfo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -112,5 +123,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBoxInfo;
+        private System.Windows.Forms.Button buttonEliminar;
     }
 }
