@@ -26,7 +26,7 @@ namespace Proyecto_Final
         private int cantidadAConsumir;
         private int cantidadReducidaPorTick;
 
-        const decimal precioL=10M;
+        const decimal precioL=10;
         int CANTIDAD_INICIAL = 1000;
         System.Windows.Forms.ProgressBar currentProgressBar;
 
@@ -101,12 +101,8 @@ namespace Proyecto_Final
         }
 
 
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
