@@ -92,7 +92,7 @@
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(118, 47);
             this.buttonEliminar.TabIndex = 6;
-            this.buttonEliminar.Text = "Borrar columna";
+            this.buttonEliminar.Text = "Borrar Fila";
             this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
             // FormInformes

@@ -34,6 +34,7 @@ namespace Proyecto_Final
             progressBarSuper.Value = progressBarSuper.Maximum;
             progressBarVpower.Value = progressBarVpower.Maximum;
 
+            CargarDatos();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -54,7 +55,6 @@ namespace Proyecto_Final
             string tipoAbastecimiento1 = comboBoxTipoAbastecimiento.Text;
             string cantidad = txtCantidad.Text;
             string nombreBomba = "";
-
             int cantidadProgreso = 0;
 
             if (string.IsNullOrWhiteSpace(nombre))
@@ -89,12 +89,12 @@ namespace Proyecto_Final
             else if (radioButtonBombaSuper.Checked)
             {
                 nombreBomba = "Super";
-                currentProgressBar = progressBarDiesel;
+                currentProgressBar = progressBarSuper;
             }
             else if (radioButtonBombaDiesel.Checked)
             {
                 nombreBomba = "Diesel";
-                currentProgressBar = progressBarSuper;
+                currentProgressBar = progressBarDiesel;
             }
             else if (radioButtonBombaVPower.Checked)
             {
@@ -119,12 +119,6 @@ namespace Proyecto_Final
                 MessageBox.Show("No se puede ingresar esa cantidad, el tanque ya está vacío.");
                 return;
             }
-            // Obtener la cantidad actual antes de realizar el nuevo abastecimiento
-            int cantidadActual = currentProgressBar.Value;
-
-            // Calcular la cantidad restante después de que se ha ingresado una nueva cantidad
-            int cantidadTotal = ObtenerCantidadIngresada();
-            
 
             var abastecimiento = new Cliente
             {
@@ -139,6 +133,10 @@ namespace Proyecto_Final
             List<Cliente> abastecimientos1 = LeerArchivoAbastecimientos();
             abastecimientos1.Add(abastecimiento);
             GuardarArchivoAbastecimientos(abastecimientos1);
+
+            // Actualizar barra de progreso y labels
+            ReducirBarraDeProgreso(cantidadProgreso);
+
             MessageBox.Show("Información Guardada");
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
@@ -160,17 +158,17 @@ namespace Proyecto_Final
 
                 switch (currentProgressBar.Name)
                 {
-                    case "progressBar1":
-                        label7.Text = (currentProgressBar.Maximum - currentProgressBar.Value).ToString();
+                    case "progressBarRegular":
+                        label7.Text = $"{currentProgressBar.Value} lts";
                         break;
-                    case "progressBar2":
-                        label12.Text = (currentProgressBar.Maximum - currentProgressBar.Value).ToString();
+                    case "progressBarDiesel":
+                        label12.Text = $"{currentProgressBar.Value} lts";
                         break;
-                    case "progressBar3":
-                        label13.Text = (currentProgressBar.Maximum - currentProgressBar.Value).ToString();
+                    case "progressBarSuper":
+                        label13.Text = $"{currentProgressBar.Value} lts";
                         break;
-                    case "progressBar4":
-                        label14.Text = (currentProgressBar.Maximum - currentProgressBar.Value).ToString();
+                    case "progressBarVpower":
+                        label14.Text = $"{currentProgressBar.Value} lts";
                         break;
                     default:
                         break;
